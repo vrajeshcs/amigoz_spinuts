@@ -7,39 +7,58 @@
     <style>
         body {
             font-family: Calibri, sans-serif;
-            background: url('https://itokri.com/cdn/shop/articles/f419ebc0-dfc2-11e7-8c02-0f57a5c79e45.jpg?v=1727436672') no-repeat center center fixed;
+            background: url('banner.jpg') no-repeat center center fixed; /* Updated to use background.jpg */
             background-size: cover;
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(1px);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
             color: white;
         }
         .content {
             text-align: center;
             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
-            padding: 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px; /* Limit the width for larger screens */
         }
         h1 {
             color: #f9f9f9;
-            font-size: 3em;
+            font-size: 2.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin: 0;
         }
         p {
             color: #f1f1f1;
-            font-size: 1.5em;
+            font-size: 1.2rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            margin: 10px 0;
         }
         .invitation {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #e74c3c;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            background-color: white; /* White background for the invitation block */
+            color: black; /* Text color for the invitation */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block; /* Make it an inline-block for better layout */
+            margin-top: 20px; /* Space above the invitation */
+            font-size: 1.2rem; /* Font size for the invitation */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
+        }
+        /* Media Query for small screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .invitation {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -47,7 +66,7 @@
     <div class="content">
         <h1>Grand Opening of Amigoz Spinuts!</h1>
         <p>We are thrilled to announce our grand opening on <strong>21st October 2024</strong>.</p>
-        <p class="invitation">Everyone is invited!</p>
+        <div class="invitation">Everyone is invited!</div> <!-- Separate block for invitation -->
     </div>
 </body>
 </html>
