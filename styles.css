@@ -1,0 +1,262 @@
+/* styles.css */
+body {
+    font-family: 'Poppins', Calibri, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+/* Header Styles */
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 5%;
+}
+
+.header .logo img {
+    height: 75px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    color: #f9f9f9;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* Tagline Style */
+.header .tagline {
+    font-family: 'Great Vibes', cursive;
+    font-size: 15px;
+    line-height: 1.875em;
+    color: #f9f9f9;
+    margin-top: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Background wrapper */
+.background-wrapper {
+    background: url('banner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.background-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Feature Image Styles */
+.feature-image {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 10px;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.feature-image h2 {
+    color: white;
+    font-size: 4.5rem;
+    line-height: 1.25em;
+    font-weight: 5;
+    margin: 0;
+}
+
+.feature-image p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Content Styles */
+.content {
+    width: 100%;
+    padding: 50px 20px;
+    text-align: center;
+    color: black;
+}
+
+.content h1 {
+    font-size: 4.5rem;
+    margin: 0;
+    font-weight: 200;
+    font-family: 'Poppins', Calibri, sans-serif;
+}
+
+p {
+    color: #f1f1f1;
+    font-size: 1.2rem;
+    line-height: 1.875em;
+    margin: 10px 0;
+}
+
+.invitation {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* About Section Styles */
+.about-section {
+    width: 100%;
+    padding: 50px 20px;
+    background-color: #fbf7f6;
+    text-align: center;
+    color: black;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #333;
+}
+
+/* New Image Section Styles */
+.image-section {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.image-scroll {
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.image-section img {
+    height: 100%;
+    margin: 0;
+    display: inline-block;
+}
+
+/* Footer Styles */
+.footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer p {
+    color: #f9f9f9;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .feature-image h2 {
+        font-size: 2rem;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+
+    .invitation {
+        font-size: 1rem;
+    }
+
+    .about-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .about-section p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Background slider and animations */
+.background-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: slide 10s infinite;
+}
+
+@keyframes slide {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
