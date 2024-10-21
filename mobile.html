@@ -7,13 +7,27 @@
     <!-- Import Poppins and Great Vibes fonts from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body {
+/* styles.css */
+
+        /* General reset to ensure everything fits within the viewport */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Include padding and borders in the element’s total width */
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
             font-family: 'Poppins', Calibri, sans-serif;
+            color: white;
+        }
+
+        /* Main Layout */
+        body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            margin: 0;
-            color: white;
         }
 
         /* Header Styles */
@@ -60,13 +74,16 @@
 
         /* Background wrapper */
         .background-wrapper {
-            background: url('images/banner.jpg') no-repeat center center fixed;
+            background: url('banner.jpg') no-repeat center center;
             background-size: cover;
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            background-attachment: scroll; /* Prevent fixed background on mobile */
+            width: 100%; /* Full width */
+            max-width: 100%; /* Prevent overflow */
         }
 
         .background-wrapper::before {
@@ -91,6 +108,7 @@
             margin-top: 10px;
             flex-direction: column;
             z-index: 2;
+            overflow-x: hidden; /* Prevent horizontal overflow */
         }
 
         .feature-image h2 {
@@ -103,7 +121,7 @@
 
         .feature-image p {
             font-family: 'Great Vibes', cursive;
-            font-size: 1.0rem;
+            font-size: 2rem;
             color: #ffffff;
             margin-top: 10px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -131,6 +149,17 @@
             margin: 10px 0;
         }
 
+        .invitation {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
         /* About Section Styles */
         .about-section {
             width: 100%;
@@ -154,44 +183,65 @@
             color: #333;
         }
 
+        /* Scrolling Container Styles */
+        .scrolling-container {
+            width: 100%;
+            overflow: hidden; /* Hide overflow to enable scrolling animation */
+            position: relative; /* Establish a positioning context for absolute children */
+        }
+
+        .scrolling-content {
+            display: flex; /* Use flexbox for horizontal alignment */
+            animation: scroll 20s linear infinite; /* Add scrolling animation */
+        }
+
+        .circle-item {
+            display: inline-block; /* Keep items in a row */
+            margin: 0 10px; /* Space between items */
+            text-align: center; /* Center text below images */
+        }
+
+        .circle-item img {
+            width: 100px; /* Fixed size for images */
+            height: 100px; /* Fixed size for images */
+            border-radius: 50%; /* Make images circular */
+        }
+
+        .circle-item p {
+            color: #333; /* Text color */
+            margin-top: 5px; /* Space between image and text */
+            font-size: 0.75rem;
+        }
+
         /* New Image Section Styles */
-.image-section {
-    width: 100%;
-    height: 300px; /* Adjusted height for better mobile viewing */
-    overflow: hidden;
-    display: flex;
-    background-color: #f0f0f0;
-    position: relative;
-}
+        .image-section {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            background-color: #f0f0f0;
+            position: relative;
+        }
 
-.image-scroll {
-    display: flex;
-    animation: scroll 20s linear infinite; /* Slower animation for mobile */
-}
+        .image-scroll {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
 
-.image-section img {
-    height: 100%;
-    margin: 0;
-    display: inline-block;
-    max-width: 100%; /* Ensure images fit well within the container */
-    object-fit: cover; /* Maintain aspect ratio without distortion */
-}
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
 
-/* Responsive media queries for mobile */
-@media (max-width: 768px) {
-    .image-section {
-        height: 200px; /* Adjust height for mobile */
-    }
-
-    .image-scroll {
-        animation: scroll 30s linear infinite; /* Even slower on mobile */
-    }
-
-    .image-section img {
-        height: auto; /* Maintain aspect ratio */
-        max-height: 100%; /* Ensure it doesn't overflow */
-    }
-}
+        .image-section img {
+            max-width: 100%; /* Prevent images from overflowing */
+            height: auto; /* Maintain aspect ratio */
+            display: inline-block;
+        }
 
         /* Footer Styles */
         .footer {
@@ -209,86 +259,42 @@
             font-size: 1rem;
         }
 
-        /* Contact Section */
-        .contact-section {
-            display: flex;
-            width: 100%;
-            background-color: #808080;
-            height: 40vh;
-        }
-
-        /* Contact section general styles */
-        .contact-details {
-            padding: 20px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-         /* Media query for mobile screens */
-        @media (max-width: 768px) {
-            .contact-details {
-                padding: 10px; /* Reduced padding for mobile */
-            }
-
-            .contact-details h3 {
-                font-size: 1.2rem; /* Smaller font size for headings */
-            }
-
-            .contact-details p {
-                font-size: 0.9rem; /* Adjusted font size for mobile */
-                margin: 3px 0; /* Reduced margins for better spacing */
-            }
-        }
-
-        /* General styles for the contact section */
-        .contact-details, .contact-image {
-            flex: 1;
-            padding: 20px;
-        }
-
-        /* Style for contact image container */
-        .contact-image {
-            display: flex;
-            justify-content: center; /* Center image horizontally */
-            align-items: center; /* Center image vertically */
-            overflow: hidden;
-        }
-
-        /* Style for the image */
-        .contact-image img {
-            width: 100%; /* Make the image responsive */
-            max-width: 382px; /* Prevent the image from becoming too large */
-            height: auto; /* Maintain aspect ratio */
-            object-fit: contain;
-        }
-
-        /* Media query for mobile screens */
-        @media (max-width: 768px) {
-            .contact-section {
-                flex-direction: column; /* Stack contact-details and contact-image */
-            }
-
-            .contact-image img {
-                max-width: 300px; /* Adjust max width for smaller screens */
-                width: 100%; /* Ensure image resizes on small screens */
-                height: auto;
-            }
-        }
-
         /* Media Query for small screens */
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.5rem;
             }
 
+
+            .feature-image {
+                height: 50vh; /* Set height to 50% of the viewport height on mobile */
+                display: flex; /* Ensure flex display for centering */
+                align-items: center; /* Center vertically */
+                justify-content: center; /* Center horizontally */
+            }
+
             .feature-image h2 {
                 font-size: 2rem;
             }
 
+            .feature-image p {
+                font-size: 1.2rem;
+            }
+
+            .background-wrapper {
+                background-attachment: scroll; /* Ensure background doesn't stay fixed on mobile */
+            }
+
             .content h1 {
                 font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .invitation {
+                font-size: 1rem;
             }
 
             .about-section h2 {
@@ -299,27 +305,28 @@
                 font-size: 0.9rem;
             }
 
-            .footer p {
-                font-size: 0.8rem;
-            }
-
             .image-section {
-                height: 200px;
+                height: 200px; /* Reduce height for mobile */
+                overflow-x: hidden; /* Prevent horizontal overflow */
             }
 
-            .contact-section {
-                flex-direction: column;
-                height: auto;
+            .content, .about-section {
+                padding: 20px; /* Reduce padding for mobile */
             }
 
-            .contact-image img {
-                width: 200px;
-                height: auto;
+            .circle-item img {
+                width: 80px; /* Smaller image size for mobile */
+                height: 80px; /* Smaller image size for mobile */
             }
+        }
 
-            .contact-details p {
-                font-size: 0.8rem;
-            }
+
+        .contact-details h3 {
+            font-size: 1.5rem; /* Adjust this size as needed */
+        }
+
+        .contact-details p {
+            font-size: 0.75rem; /* Adjust this size as needed */
         }
 
         /* Background slider and animations */
@@ -339,107 +346,16 @@
             background-size: cover;
             background-position: center;
             animation: slide 10s infinite;
-            opacity: 0.8;
-        }
-        /* Media Query for mobile screens */
-        @media (max-width: 768px) {
-            .background-image {
-                background-size: contain; /* Contain for mobile to avoid cropping */
-                background-repeat: no-repeat; /* Prevent tiling of the image */
-                background-position: center; /* Keep the image centered */
-            }
         }
 
         @keyframes slide {
-            0% {
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            30% {
-                opacity: 1;
-            }
-            40% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 0;
-            }
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            30% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
         }
-        
-        
-                /* Container for the entire scroll section */
-         /* Container for the entire scroll section */
-        .scrolling-container {
-            width: 100vw;
-            overflow: hidden;
-            position: relative;
-            background-color: #f0f0f0;
-            padding: 10px 0;
-        }
-
-        /* Inner wrapper that will animate (hold all the items) */
-        .scrolling-content {
-            display: flex;
-            animation: scroll 20s linear infinite;
-        }
-
-        /* Each circle container */
-        .circle-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 50px; /* Increased margin for more space between circles */
-            flex-shrink: 0;
-        }
-
-        /* Circle styling */
-        .circle-item img {
-            width: 80px; /* Adjust for your needs */
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            /* Removed border */
-        }
-
-        /* Title below each circle */
-        .circle-item p {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            color: #333;
-            text-align: center;
-        }
-
-        /* Keyframe for infinite scrolling animation */
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Responsive media queries for mobile */
-        @media (max-width: 768px) {
-            /* Slower animation for better user experience on smaller devices */
-            .scrolling-content {
-                animation: scroll 50s linear infinite;
-            }
-
-            /* Smaller circle size for mobile */
-            .circle-item img {
-                width: 60px;
-                height: 60px;
-            }
-
-            /* Adjust font size for titles */
-            .circle-item p {
-                font-size: 0.75rem;
-            }
-        }
-    </style>
+            </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
