@@ -374,7 +374,31 @@
             40% { opacity: 0; }
             100% { opacity: 0; }
         }
-            </style>
+
+        /* Prevent header and background-wrapper from switching to mobile layout */
+        .header, .background-wrapper {
+            width: 100%; /* Keep full width */
+            height: auto; /* Ensure content fits properly */
+        }
+    
+        .header h1 {
+            font-size: 1.8rem; /* Desktop font size */
+        }
+    
+        .background-wrapper {
+            background-attachment: scroll; /* Prevent fixed background */
+            background-size: cover; /* Ensure the background image covers the section */
+        }
+    
+        .background-wrapper .feature-image h2 {
+            font-size: 4.5rem; /* Maintain large desktop font size */
+        }
+    
+        .background-wrapper .feature-image p {
+            font-size: 2rem; /* Keep the desktop font size for the tagline */
+        }
+        
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -501,7 +525,7 @@
     </div>
     
         <!-- Contact Details Section -->
-<div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 25vh;">
+<div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 30vh;">
     <div class="contact-details" style="flex: 1; padding: 20px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <h3 style="margin: 0;">Contact Us</h3>
         <p style="margin: 5px 0;">Email: contact@amigozspinuts.com</p>
