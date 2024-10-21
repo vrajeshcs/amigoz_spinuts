@@ -1,4 +1,3 @@
-
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -217,25 +216,18 @@
         /* New Image Section Styles */
         .image-section {
             width: 100%;
-            height: 200px; /* Set a fixed height */
-            overflow: hidden; /* Hide overflow to keep the layout clean */
-            display: flex; /* Ensure images are displayed in a row */
+            height: 400px;
+            overflow: hidden;
+            display: flex;
             background-color: #f0f0f0;
             position: relative;
         }
 
         .image-scroll {
-            display: flex; /* Use flexbox for horizontal alignment */
-            animation: scroll 60s linear infinite; /* Add scrolling animation */
-            min-width: calc(100% * 12); /* Ensure the container is wide enough for all images */
+            display: flex;
+            animation: scroll 20s linear infinite;
         }
 
-        .image-section img {
-            height: 100%; /* Set height to 100% of the section to fill it */
-            width: auto; /* Maintain aspect ratio */
-            flex: 0 0 auto; /* Prevent images from stretching */
-            
-        }
         @keyframes scroll {
             0% {
                 transform: translateX(0);
@@ -245,7 +237,11 @@
             }
         }
 
-
+        .image-section img {
+            max-width: 100%; /* Prevent images from overflowing */
+            height: auto; /* Maintain aspect ratio */
+            display: inline-block;
+        }
 
         /* Footer Styles */
         .footer {
@@ -314,8 +310,9 @@
                 overflow-x: hidden; /* Prevent horizontal overflow */
             }
             .image-scroll {
-                animation: scroll 30s linear infinite; /* Speed up the scrolling for mobile */
+                animation: scroll 15s linear infinite; /* Speed up the scrolling for mobile */
             }
+
             .content, .about-section {
                 padding: 20px; /* Reduce padding for mobile */
             }
@@ -488,7 +485,7 @@
     </div>
     
         <!-- Contact Details Section -->
-<div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 20vh;">
+<div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 25vh;">
     <div class="contact-details" style="flex: 1; padding: 20px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <h3 style="margin: 0;">Contact Us</h3>
         <p style="margin: 5px 0;">Email: contact@amigozspinuts.com</p>
