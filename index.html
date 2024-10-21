@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -309,9 +309,6 @@
                 height: 200px; /* Reduce height for mobile */
                 overflow-x: hidden; /* Prevent horizontal overflow */
             }
-            .image-scroll {
-                animation: scroll 15s linear infinite; /* Speed up the scrolling for mobile */
-            }
 
             .content, .about-section {
                 padding: 20px; /* Reduce padding for mobile */
@@ -320,6 +317,25 @@
             .circle-item img {
                 width: 80px; /* Smaller image size for mobile */
                 height: 80px; /* Smaller image size for mobile */
+            }
+
+            .image-scroll {
+                display: flex;
+                animation: scroll-mobile 15s linear infinite; /* Faster animation for smaller screens */
+            }
+
+            .image-section img {
+                width: 200px; /* Adjust image width to fit mobile */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            @keyframes scroll-mobile {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
             }
         }
 
