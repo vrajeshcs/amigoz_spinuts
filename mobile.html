@@ -166,7 +166,7 @@
 
 .image-scroll {
     display: flex;
-    animation: scroll 50s linear infinite; /* Slower animation for mobile */
+    animation: scroll 20s linear infinite; /* Slower animation for mobile */
 }
 
 .image-section img {
@@ -184,7 +184,7 @@
     }
 
     .image-scroll {
-        animation: scroll 60s linear infinite; /* Even slower on mobile */
+        animation: scroll 30s linear infinite; /* Even slower on mobile */
     }
 
     .image-section img {
@@ -341,6 +341,14 @@
             animation: slide 10s infinite;
             opacity: 0.8;
         }
+        /* Media Query for mobile screens */
+        @media (max-width: 768px) {
+            .background-image {
+                background-size: contain; /* Contain for mobile to avoid cropping */
+                background-repeat: no-repeat; /* Prevent tiling of the image */
+                background-position: center; /* Keep the image centered */
+            }
+        }
 
         @keyframes slide {
             0% {
@@ -457,7 +465,13 @@
             <div class="background-image" style="background-image: url('images/background.jpg');"></div>
         </div>
     </div>
-        <div class="scrolling-container">
+        <!-- Content Section -->
+    <div class="content">
+        <h1>Grand Opening on 21st</h1>
+        <h1>October 2024 </h1>
+    </div>
+    
+    <div class="scrolling-container">
         <div class="scrolling-content">
             <!-- First set of circles -->
             <div class="circle-item">
