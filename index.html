@@ -3,11 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amigoz Spinuts Grand Opening</title>
+    <title>Amigoz Spinuts</title>
     <!-- Import Poppins and Great Vibes fonts from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* styles.css */
+
+        /* General reset to ensure everything fits within the viewport */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Include padding and borders in the element’s total width */
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            font-family: 'Poppins', Calibri, sans-serif;
+            color: white;
+        }
+
+        /* Main Layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            width: 100%;
+            padding: 20px;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 5%;
+        }
+
+        .header .logo img {
+            height: 75px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            color: #f9f9f9;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin: 0;
+        }
+
+        /* Tagline Style */
+        .header .tagline {
+            font-family: 'Great Vibes', cursive;
+            font-size: 15px;
+            line-height: 1.875em;
+            color: #f9f9f9;
+            margin-top: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Background wrapper */
+        .background-wrapper {
+            background: url('banner.jpg') no-repeat center center;
+            background-size: cover;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            background-attachment: scroll; /* Prevent fixed background on mobile */
+            width: 100%; /* Full width */
+            max-width: 100%; /* Prevent overflow */
+        }
+
+        .background-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Feature Image Styles */
+        .feature-image {
+            width: 100%;
+            height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 10px;
+            flex-direction: column;
+            z-index: 2;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        .feature-image h2 {
+            color: white;
+            font-size: 4.5rem;
+            line-height: 1.25em;
+            font-weight: 5;
+            margin: 0;
+        }
+
+        .feature-image p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Styles */
+        .content {
+            width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+            color: black;
+        }
+
+        .content h1 {
+            font-size: 4.5rem;
+            margin: 0;
+            font-weight: 200;
+            font-family: 'Poppins', Calibri, sans-serif;
+        }
+
+        p {
+            color: #f1f1f1;
+            font-size: 1.2rem;
+            line-height: 1.875em;
+            margin: 10px 0;
+        }
+
+        .invitation {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Section Styles */
+        .about-section {
+            width: 100%;
+            padding: 50px 20px;
+            background-color: #fbf7f6;
+            text-align: center;
+            color: black;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        /* Scrolling Container Styles */
+        .scrolling-container {
+            width: 100%;
+            overflow: hidden; /* Hide overflow to enable scrolling animation */
+            position: relative; /* Establish a positioning context for absolute children */
+        }
+
+        .scrolling-content {
+            display: flex; /* Use flexbox for horizontal alignment */
+            animation: scroll 20s linear infinite; /* Add scrolling animation */
+        }
+
+        .circle-item {
+            display: inline-block; /* Keep items in a row */
+            margin: 0 10px; /* Space between items */
+            text-align: center; /* Center text below images */
+        }
+
+        .circle-item img {
+            width: 100px; /* Fixed size for images */
+            height: 100px; /* Fixed size for images */
+            border-radius: 50%; /* Make images circular */
+        }
+
+        .circle-item p {
+            color: #333; /* Text color */
+            margin-top: 5px; /* Space between image and text */
+            font-size: 0.75rem;
+        }
+
+        /* New Image Section Styles */
+        .image-section {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+
+        .image-scroll {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .image-section img {
+            max-width: 100%; /* Prevent images from overflowing */
+            height: auto; /* Maintain aspect ratio */
+            display: inline-block;
+        }
+
+        /* Footer Styles */
+        .footer {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer p {
+            color: #f9f9f9;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Media Query for small screens */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+
+            .feature-image {
+                height: 50vh; /* Set height to 50% of the viewport height on mobile */
+                display: flex; /* Ensure flex display for centering */
+                align-items: center; /* Center vertically */
+                justify-content: center; /* Center horizontally */
+            }
+
+            .feature-image h2 {
+                font-size: 2rem;
+            }
+
+            .feature-image p {
+                font-size: 1.2rem;
+            }
+
+            .background-wrapper {
+                background-attachment: scroll; /* Ensure background doesn't stay fixed on mobile */
+            }
+
+            .content h1 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .invitation {
+                font-size: 1rem;
+            }
+
+            .about-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-section p {
+                font-size: 0.9rem;
+            }
+
+            .image-section {
+                height: 200px; /* Reduce height for mobile */
+                overflow-x: hidden; /* Prevent horizontal overflow */
+            }
+
+            .content, .about-section {
+                padding: 20px; /* Reduce padding for mobile */
+            }
+
+            .circle-item img {
+                width: 80px; /* Smaller image size for mobile */
+                height: 80px; /* Smaller image size for mobile */
+            }
+        }
+
+
+        .contact-details h3 {
+            font-size: 1.5rem; /* Adjust this size as needed */
+        }
+
+        .contact-details p {
+            font-size: 0.75rem; /* Adjust this size as needed */
+        }
+
+        /* Background slider and animations */
+        .background-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: slide 10s infinite;
+        }
+
+        @keyframes slide {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            30% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+            </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the external stylesheet -->
 </head>
 <body>
 
@@ -17,32 +366,91 @@
             <img src="images/logo.png" alt="Amigoz Spinuts Logo">
         </div>
         <h1>Amigoz Spinuts</h1>
-        <!-- Tagline below the title -->
         <div class="tagline">Quality is our priority</div>
     </div>
 
     <!-- Background wrapper for feature image -->
     <div class="background-wrapper">
-        <!-- Feature Image Section -->
         <div class="feature-image">
             <h2>Amigoz Spinuts</h2> 
             <p><i>Proudly Sourced From Your Area!</i></p>    
         </div>
-            <!-- Add sliding images -->
         <div class="background-slider">
             <div class="background-image" style="background-image: url('images/banner.jpg');"></div>
             <div class="background-image" style="background-image: url('images/6-1.jpg');"></div>
             <div class="background-image" style="background-image: url('images/background.jpg');"></div>
         </div>
     </div>
-
-    <!-- Content Section -->
+        <!-- Content Section -->
     <div class="content">
         <h1>Grand Opening on 21st</h1>
         <h1>October 2024 </h1>
     </div>
+    
+    <div class="scrolling-container">
+        <div class="scrolling-content">
+            <!-- First set of circles -->
+            <div class="circle-item">
+                <img src="images/91.jpg" alt="Photo 1">
+                <p>Dry Fruits and Mix Nuts</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/94.jpg" alt="Photo 2">
+                <p>Flavoured Mix</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/95.jpg" alt="Photo 3">
+                <p>Cinnamon</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/93.jpg" alt="Photo 4">
+                <p>Fig</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/96.jpg" alt="Photo 5">
+                <p>Cardamom</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/97.jpg" alt="Photo 6">
+                <p>Ceylon Cinnamon</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/11.jpg" alt="Photo 7">
+                <p>Combo</p>
+            </div>
 
-    <!-- About Section -->
+            <!-- Duplicate the circles to create seamless scroll -->
+            <div class="circle-item">
+                <img src="images/91.jpg" alt="Photo 1">
+                <p>Dry Fruits and Mix Nuts</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/94.jpg" alt="Photo 2">
+                <p>Flavoured Mix</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/95.jpg" alt="Photo 3">
+                <p>Cinnamon</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/93.jpg" alt="Photo 4">
+                <p>Fig</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/96.jpg" alt="Photo 5">
+                <p>Cardamom</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/97.jpg" alt="Photo 6">
+                <p>Ceylon Cinnamon</p>
+            </div>
+            <div class="circle-item">
+                <img src="images/11.jpg" alt="Photo 7">
+                <p>Combo</p>
+            </div>
+        </div>
+    </div>
+      <!-- About Section -->
     <div class="about-section">
         <h2>About Amigoz Spinuts</h2>
         <p>Welcome to Amigoz Spinuts, your premier destination for the finest Indian spices in Sankarankoil, Tamil Nadu.
@@ -54,7 +462,7 @@
         </p>
     </div>
 
-    <!-- New Image Section -->
+      <!-- New Image Section -->
     <div class="image-section">
         <div class="image-scroll">
             <img src="images/11.jpg" alt="Image 1">
@@ -72,47 +480,26 @@
             <img src="images/6-1.jpg" alt="Image 6">
         </div>
     </div>
-  
     
-    
-    <!-- Contact Details Section -->
-    <div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 40vh;">
-        <div class="contact-details" style="flex: 1; padding: 20px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h3 style="margin: 0;">Contact Us</h3>
-            <p style="margin: 5px 0;">Email: contact@amigozspinuts.com</p>
-            <p style="margin: 5px 0;">Phone: +91 6380223349</p>
-            <p style="margin: 5px 0;">Address: 32, Devipattinam St, </p>
-            <p style="margin: 5px 0;">Near to Muppadthi Amman Kovil,</p>
-            <p style="margin: 5px 0;">Gomathiyapuram, Sankarankoil,</p>
-            <p style="margin: 5px 0;">Tamil Nadu- 627756</p>
-        </div>
-        <div class="contact-image" style="flex: 1; height: 100%; display: flex; justify-content: left; align-items: center; overflow: hidden;">
-            <img src="images/logo.jpg" alt="Contact Image" style="width: 382px; height: 382px; object-fit: contain;"/> <!-- Set width and height as needed -->
-        </div>
+        <!-- Contact Details Section -->
+<div class="contact-section" style="display: flex; width: 100%; background-color: #808080; height: 40vh;">
+    <div class="contact-details" style="flex: 1; padding: 20px; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h3 style="margin: 0;">Contact Us</h3>
+        <p style="margin: 5px 0;">Email: contact@amigozspinuts.com</p>
+        <p style="margin: 5px 0;">Phone: +91 6380223349</p>
+        <p style="margin: 5px 0;">Address: 32, Devipattinam St, </p>
+        <p style="margin: 5px 0;">Near to Muppadthi Amman Kovil,</p>
+        <p style="margin: 5px 0;">Gomathiyapuram, Sankarankoil,</p>
+        <p style="margin: 5px 0;">Tamil Nadu- 627756</p>
     </div>
-
-    
-    <!-- Footer -->
-<div class="footer" style="width: 100%; background-color: rgba(0, 0, 0, 0.7); text-align: center; padding: 0px; position: relative; z-index:0;">
-    <p style="color: #f9f9f9; margin: 0; font-size: 1rem;">
-        © 2024 Amigoz Spinuts. All rights reserved.
-    </p>
-    <div class="social-media" style="margin-top: 10px;">
-        <a href="https://www.facebook.com" target="_blank" style="color: #f9f9f9; text-decoration: none; margin: 0 10px;">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.twitter.com" target="_blank" style="color: #f9f9f9; text-decoration: none; margin: 0 10px;">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" style="color: #f9f9f9; text-decoration: none; margin: 0 10px;">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" style="color: #f9f9f9; text-decoration: none; margin: 0 10px;">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
+    <div class="contact-image" style="flex: 1; height: 100%; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+        <img src="images/logo.png" alt="Contact Image" style="width: 100%; max-width: 200px; height: 200px; object-fit: contain;"/> <!-- Set width and height as needed -->
     </div>
 </div>
-    
-    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p> &copy; 2024 Amigoz Spinuts. All rights reserved. </p>
+    </footer>
 </body>
 </html>
